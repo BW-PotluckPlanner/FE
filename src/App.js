@@ -4,6 +4,7 @@ import EditDate from './components/EditDate'
 import Event from './components/Event'
 import {useEffect, useState} from 'react';
 import Dashboard from './components/Dashboard';
+import { Route } from "react-router-dom";
 
 
 
@@ -15,7 +16,7 @@ function App() {
         <h1>Potluck Planner</h1>
         <hr></hr>
       </header>
-        <Dashboard/>
+        <Route exact path="/" component={Dashboard}/>
     </div>
   );
 }
