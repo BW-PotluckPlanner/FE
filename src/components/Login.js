@@ -80,6 +80,7 @@ function Login( props) {
             console.log(res.data.token);
             localStorage.setItem('token', res.data.token);
             console.log("success!", res);
+            localStorage.setItem('userId', res.data.userId)
             setFormState({name: "",
             email: "",
             password: "",
