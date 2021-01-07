@@ -69,6 +69,7 @@ function Login(props) {
       .then((res) => {
         console.log(res.data.token);
         localStorage.setItem("token", res.data.token);
+        localStorage.setItem("userId", res.data.userId);
         console.log("success!", res);
         setFormState({ name: "", email: "", password: "", age: 0 });
         setErrors({

@@ -6,7 +6,7 @@ import { useEffect, useState } from "react";
 import Dashboard from "./components/Dashboard";
 import { Route } from "react-router-dom";
 import Login from "./components/Login";
-// import Register from "./components/Register";
+import Register from "./components/Register";
 import Header from "./components/Header";
 import AddFood from "./components/AddFood";
 
@@ -19,8 +19,8 @@ function App() {
       </header>
       <Route exact path="/" component={Dashboard} />
       <Route path="/login" component={Login} />
-      {/* <Route path="/register" component={Register}/> */}
-      <AddFood />
+      <Route path="/register" component={Register} />
+      {/* <AddFood /> */}
     </div>
   );
 }

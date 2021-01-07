@@ -4,6 +4,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { connect } from "react-redux";
 import { getFoodData } from "../Redux/actions/addFoodActions";
+import axiosWithAuth from "../api/axiosWithAuth";
 
 const AddFood = (props) => {
   const [foodList, setFoodList] = useState({
@@ -11,6 +12,7 @@ const AddFood = (props) => {
     pId: 0,
   });
   const [post, setPost] = useState();
+  console.log(props);
 
   // useEffect(() => {
   //   props.getFoodData();
@@ -22,10 +24,10 @@ const AddFood = (props) => {
 
   const formSubmit = (e) => {
     e.preventDefault();
-    axios
-      .post("https://potluck-planner1220.herokuapp.com/api/food", {
-        ...foodList,
-        pId: props.potluck.id,
+    axiosWithAuth()
+      .post("api/food", {
+        name: foodList.name,
+        pId: props.event.id,
       })
       .then((res) => {
         console.log(res.data);
@@ -37,7 +39,8 @@ const AddFood = (props) => {
   };
   return (
     <div>
-      <form onSubmit={formSubmit}>
+      {/* <form onSubmit={formSubmit}> */}
+      <form onSubmit={(e) => formSubmit(e)}>
         <label>What do we need?</label>
         <input
           name="name"
@@ -46,7 +49,7 @@ const AddFood = (props) => {
           type="text"
           onChange={handleChanges}
         />
-        <button>Submit</button>
+        <button type="submit">Submit</button>
       </form>
     </div>
   );
