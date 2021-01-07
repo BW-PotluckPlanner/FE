@@ -24,7 +24,7 @@ const AddFood = (props) => {
     e.preventDefault();
     axios
       .post("https://potluck-planner1220.herokuapp.com/api/food", {
-        ...foodList.name,
+        ...foodList,
         pId: props.potluck.id,
       })
       .then((res) => {
