@@ -6,7 +6,7 @@ export const FETCH_DATA_FAIL = "DATA_FAIL";
 export const getFoodData = () => (dispatch) => {
   dispatch({ type: FETCH_DATA_START });
   axios
-    .get("")
+    .get("https://potluck-planner1220.herokuapp.com/api/food")
     .then((res) => {
       dispatch({
         type: FETCH_DATA_SUCCESS,

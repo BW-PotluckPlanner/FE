@@ -6,7 +6,10 @@ import { connect } from "react-redux";
 import { getFoodData } from "../Redux/actions/addFoodActions";
 
 const AddFood = (props) => {
-  const [foodList, setFoodList] = useState([]);
+  const [foodList, setFoodList] = useState({
+    name: "",
+    pId: 0,
+  });
   const [post, setPost] = useState();
 
   // useEffect(() => {
@@ -20,7 +23,10 @@ const AddFood = (props) => {
   const formSubmit = (e) => {
     e.preventDefault();
     axios
-      .post("", foodList)
+      .post("https://potluck-planner1220.herokuapp.com/api/food", {
+        ...foodList.name,
+        pId: props.potluck.id,
+      })
       .then((res) => {
         console.log(res.data);
         setPost(res.data);
@@ -34,7 +40,7 @@ const AddFood = (props) => {
       <form onSubmit={formSubmit}>
         <label>What do we need?</label>
         <input
-          name="food"
+          name="name"
           id="food"
           value={foodList.name}
           type="text"
