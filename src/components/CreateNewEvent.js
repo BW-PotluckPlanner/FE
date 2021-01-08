@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import "../App.css";
 import axiosWithAuth from "../api/axiosWithAuth";
+
 function CreateNewEvent(props) {
   const [create, setCreate] = useState(false);
   const changeCreate = () => {
@@ -56,7 +57,11 @@ function CreateNewEvent(props) {
   };
   return (
     <div className="create">
-      {!create && <button onClick={changeCreate}>Create New Event</button>}
+      {!create && (
+        <button className="createButton" onClick={changeCreate}>
+          Create New Event
+        </button>
+      )}
       {create && (
         <h2>
           Event Name:{" "}

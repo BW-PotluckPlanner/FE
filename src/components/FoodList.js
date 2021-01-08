@@ -11,9 +11,12 @@ const FoodList = (props) => {
   useEffect(() => {
     axiosWithAuth()
       .get(`api/potluck/${props.pId}`)
-      .then((res) => setFoodArray(res.data.food))
+      .then((res) => {
+        console.log(res);
+        setFoodArray(res.data.food);
+      })
       .catch((err) => console.log(err, "error"));
-    console.log(foodArray);
+    console.log(foodArray, "ATTN");
     // setFoodArray(props.foodName);
     // console.log(props, "PROPS");
   }, []);
@@ -22,7 +25,7 @@ const FoodList = (props) => {
     <div>
       <ul>
         {foodArray.map((e) => (
-          <FoodListItem name={e.name} id={e.id} />
+          <FoodListItem name={e.name} id={e.pId} />
         ))}
       </ul>
     </div>

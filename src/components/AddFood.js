@@ -28,6 +28,7 @@ const AddFood = (props) => {
       .then((res) => {
         // console.log(res.data);
         setPost(res.data);
+        window.location.reload(false);
       })
       .catch((err) => {
         console.log(err);

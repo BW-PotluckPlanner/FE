@@ -12,7 +12,6 @@ export const getFoodData = () => (dispatch) => {
         type: FETCH_DATA_SUCCESS,
         payload: res.data,
       });
-      // debugger;
       console.log(res, "getData success");
     })
     .catch((err) => {

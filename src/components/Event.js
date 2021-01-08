@@ -4,6 +4,7 @@ import ConfirmAttendance from "./ConfirmAttendance";
 import { useEffect, useState } from "react";
 import AddFood from "./AddFood";
 import FoodList from "./FoodList";
+import "./Event.css";
 
 function Event(props) {
   const [editdate, setEditdate] = useState(true);

@@ -1,17 +1,25 @@
-import {useEffect, useState} from 'react';
+import { useEffect, useState } from "react";
+import "../App.css";
 
 function DisplayDate(props) {
+  const [date, setDate] = useState({
+    title: props.event.name,
+    date: props.event.date,
+    time: props.event.time_start,
+    end: props.event.time_end,
+    description: props.event.description,
+  });
 
-  const [date, setDate] = useState({title: props.event.name, date: props.event.date, time: props.event.time_start, end: props.event.time_end, description: props.event.description});
-
-  return (  
+  return (
     <div className="date">
       <h2>{date.title}</h2>
       <h3>Date: {date.date}</h3>
       <h3>Start Time: {date.time}</h3>
       <h3>End Time: {date.end}</h3>
       <h3>Description: {date.description}</h3>
-      <button onClick={props.changeEdit}>Edit Event Info</button>
+      <button className="editEventButton" onClick={props.changeEdit}>
+        Edit Event Info
+      </button>
     </div>
   );
 }

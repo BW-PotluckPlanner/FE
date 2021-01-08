@@ -13,7 +13,9 @@ function ConfirmAttendance(props) {
           You have not yet confirmed you will be attending this event
         </p>
       )}
-      <button onClick={props.changersvp}>Change Attendance Status</button>
+      <button className="changeAttendanceButton" onClick={props.changersvp}>
+        Change Attendance Status
+      </button>
     </div>
   );
 }
