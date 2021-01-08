@@ -12,11 +12,7 @@ const AddFood = (props) => {
     pId: 0,
   });
   const [post, setPost] = useState();
-  console.log(props);
-
-  // useEffect(() => {
-  //   props.getFoodData();
-  // }, []);
+  // console.log(props);
 
   const handleChanges = (e) => {
     setFoodList({ ...foodList, [e.target.name]: e.target.value });
@@ -30,7 +26,7 @@ const AddFood = (props) => {
         pId: props.event.id,
       })
       .then((res) => {
-        console.log(res.data);
+        // console.log(res.data);
         setPost(res.data);
       })
       .catch((err) => {

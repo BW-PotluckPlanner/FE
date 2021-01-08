@@ -3,6 +3,7 @@ import EditDate from "./EditDate";
 import ConfirmAttendance from "./ConfirmAttendance";
 import { useEffect, useState } from "react";
 import AddFood from "./AddFood";
+import FoodList from "./FoodList";
 
 function Event(props) {
   const [editdate, setEditdate] = useState(true);
@@ -26,6 +27,7 @@ function Event(props) {
       )}
       <ConfirmAttendance rsvp={rsvp} changersvp={changersvp} />
       <AddFood event={props.event} />
+      <FoodList pId={props.event.id} />
       <hr></hr>
     </div>
   );
