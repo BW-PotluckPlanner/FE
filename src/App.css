@@ -4,3 +4,13 @@
 .good{
     color: green;
 }
+
+.header{
+    display: flex;
+    align-items: space-between;
+    justify-content: space-between;
+}
+
+.nav-link{
+    margin-right: 10px;
+}
