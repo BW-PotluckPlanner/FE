@@ -1,18 +1,26 @@
 import DisplayDate from './DisplayDate';
 import EditDate from './EditDate';
 import ConfirmAttendance from './ConfirmAttendance';
+import axiosWithAuth from '../api/axiosWithAuth';
 import {useEffect, useState} from 'react';
 
 function Event(props) {
   const [editdate, setEditdate] = useState(true);
-  const [rsvp, setrsvp] = useState(props.event.rsvp);
+  const [rsvp, setrsvp] = useState(props.event.isAttending === "yes"? true : false);
+  console.log(props.event.isAttending);
+  console.log(rsvp);
+
 
   const changeEditDate = () =>{
     setEditdate(!editdate);
   }
   const changersvp = () =>{
-    setrsvp(!rsvp);
-    //will save this to database once endpoint is setup
+    const id = localStorage.getItem("userId");
+    console.log({"rsvpId": rsvp ? 2 : 1, "userId": id})
+    axiosWithAuth().put(`api/potluck/${props.event.id}/RSVP`, {"rsvpId": rsvp ? 2 : 1, "userId": id}).then(res =>{ 
+      console.log(res.data);
+      setrsvp(!rsvp);
+    })
   }
 
   return (

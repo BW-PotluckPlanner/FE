@@ -1,11 +1,45 @@
-import React, {useState, useEffect} from 'react';
+import React from "react";
+import { Link } from "react-router-dom";
+import '../App.css';
 
 
-function Header( props) {
+const Header = () => {
+
+  const signOut = () => {
+    localStorage.removeItem("token");
+    // window.location.reload("/login");
+  };
+
+  const getToken = () => {
+    return window.localStorage.getItem("userID")
+}
 
   return (
-    <h1>Potluck Planner</h1>
+    <div className="header">
+      <a
+        className="logo"
+        href="#"
+      >
+        Potluck Planner
+      </a>
+      <nav className="nav-links">
+        {window.localStorage.getItem("token") ? (
+          <Link className="nav-link" to="/login" onClick={signOut}>
+            Sign Out
+          </Link>
+        ) : (
+          <Link className="nav-link" to="/login">
+            Sign In
+          </Link>
+        )}
+        {window.localStorage.getItem("token") ? null : (
+          <Link className="nav-link" id="signup-btn" to="/register">
+            Sign Up
+          </Link>
+        )}
+      </nav>
+    </div>
   );
-}
+};
 
 export default Header;

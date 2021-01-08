@@ -16,7 +16,7 @@ function EditDate(props) {
     setDate({...date, title: e.target.value})
   }
   const changeDes = (e) =>{
-    setDate({...date, title: e.target.description})
+    setDate({...date, description: e.target.description})
   }
   const setData = () =>{
       axiosWithAuth().put(`api/potluck/${props.event.id}`, {"name": date.title, "date": date.date, "time_start": date.time, "time_end": date.end, "description": date.description}).then(res =>{
