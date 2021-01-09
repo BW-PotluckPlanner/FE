@@ -12,7 +12,7 @@ const AddFood = (props) => {
     pId: 0,
   });
   const [post, setPost] = useState();
-  // console.log(props);
+  console.log(props);
 
   const handleChanges = (e) => {
     setFoodList({ ...foodList, [e.target.name]: e.target.value });
@@ -26,14 +26,16 @@ const AddFood = (props) => {
         pId: props.event.id,
       })
       .then((res) => {
-        // console.log(res.data);
+        console.log(res.data, "ADDFOOD THEN");
         setPost(res.data);
+        console.log(post, "POST ADD FOOD");
         window.location.reload(false);
       })
       .catch((err) => {
-        console.log(err);
+        console.log(err, "ADD FOOD ERROR");
       });
   };
+  console.log(post);
   return (
     <div>
       {/* <form onSubmit={formSubmit}> */}

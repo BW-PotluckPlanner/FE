@@ -7,25 +7,34 @@ import axiosWithAuth from "../api/axiosWithAuth";
 
 const FoodList = (props) => {
   const [foodArray, setFoodArray] = useState([]);
+  const [userArray, setUserArray] = useState([]);
 
   useEffect(() => {
+    props.getFoodData();
     axiosWithAuth()
       .get(`api/potluck/${props.pId}`)
       .then((res) => {
         console.log(res);
         setFoodArray(res.data.food);
+        setUserArray(res.data.usersBringing);
+        console.log(res.data, "ATTN");
       })
       .catch((err) => console.log(err, "error"));
-    console.log(foodArray, "ATTN");
-    // setFoodArray(props.foodName);
-    // console.log(props, "PROPS");
-  }, []);
 
+    // setFoodArray(props.foodName);
+    console.log(props, "PROPS FROM FOODLIST");
+  }, []);
+  console.log(foodArray, "FOODname     :****  ");
   return (
     <div>
       <ul>
         {foodArray.map((e) => (
-          <FoodListItem name={e.name} id={e.pId} />
+          <FoodListItem
+            pId={props.pId}
+            foodId={e.id}
+            name={e.name}
+            usersBringing={userArray}
+          />
         ))}
       </ul>
     </div>
@@ -35,6 +44,7 @@ const FoodList = (props) => {
 const mapStateToProps = (state) => {
   return {
     foodName: state.foodName,
+    foodId: state.foodId,
     is_loading_data: state.is_loading_data,
     error: state.error,
   };

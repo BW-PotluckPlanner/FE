@@ -2,35 +2,50 @@ import React, { useState, useEffect } from "react";
 import axiosWithAuth from "../api/axiosWithAuth";
 
 const FoodListItem = (props) => {
-  console.log(props);
+  console.log(props, "FOOD LIST ITEM PROPS");
   const [guest, setGuest] = useState("");
+  const id = localStorage.getItem("userId");
+  console.log("userId", id);
+
+  /// "You are now bringing ${props.name}"
   useEffect(() => {
     axiosWithAuth()
       .get(`api/potluck/${props.pId}/bringfood`)
-      .then((res) => setGuest(res.userId))
+      .then((res) => {
+        // console.log(res);
+        setGuest(res.userId);
+      })
       .catch((err) => console.log(err, "error foodListItem"));
   }, []);
 
   const foodClicked = () => {
     if (guest && guest === props.pId) {
       axiosWithAuth()
-        .delete(`api/potluck/${props.userId}/bringfood`)
+        .delete(`api/potluck/${id}/bringfood`)
         .then((res) => {
           console.log(res);
-          setGuest(props.userId);
+          setGuest(id);
         })
 
         .catch((err) => console.log(err, "error delete"));
     } else if (!guest) {
       axiosWithAuth()
         .post(`api/potluck/${props.pId}/bringfood`, {
-          userId: props.userId,
-          foodId: props.id,
+          userId: id,
+          foodId: props.foodId,
         })
-        .then((res) => setGuest(props.userId))
+        .then((res) => {
+          console.log(res);
+          setGuest("You are now bringing this!");
+        })
         .catch((err) => console.log(err, "error post"));
     }
   };
+
+  console.log(
+    props.usersBringing,
+    "These users are bringing this ITEM ********"
+  );
 
   return (
     <li className={guest ? "strike" : "unstruck"} onClick={foodClicked}>

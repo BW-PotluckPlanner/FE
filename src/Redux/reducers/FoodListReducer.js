@@ -5,9 +5,8 @@ import {
 } from "../actions/addFoodActions";
 
 const initialState = {
-  foodName: {
-    name: "",
-  },
+  foodName: [],
+  foodId: [],
   is_loading_data: false,
   error: "",
 };
@@ -24,6 +23,7 @@ export const FoodListReducer = (state = initialState, action) => {
         ...state,
         is_loading_data: false,
         foodName: action.payload,
+        foodId: action.payload.id,
         error: "",
       };
     case FETCH_DATA_FAIL:

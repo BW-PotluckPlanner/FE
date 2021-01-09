@@ -1,7 +1,7 @@
 import axios from "axios";
-export const FETCH_DATA_START = "DATA_START";
-export const FETCH_DATA_SUCCESS = "DATA_SUCCESS";
-export const FETCH_DATA_FAIL = "DATA_FAIL";
+export const FETCH_DATA_START = "FETCH_DATA_START";
+export const FETCH_DATA_SUCCESS = "FETCH_DATA_SUCCESS";
+export const FETCH_DATA_FAIL = "FETCH_DATA_FAIL";
 
 export const getFoodData = () => (dispatch) => {
   dispatch({ type: FETCH_DATA_START });
@@ -12,7 +12,7 @@ export const getFoodData = () => (dispatch) => {
         type: FETCH_DATA_SUCCESS,
         payload: res.data,
       });
-      console.log(res, "getData success");
+      console.log(res.data, "getData success");
     })
     .catch((err) => {
       console.log("error", err);

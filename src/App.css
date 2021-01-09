@@ -10,7 +10,7 @@
 }
 .createButton {
   border-radius: 12px;
-  padding: 0.7rem;
+  padding: 1.2rem;
   transition-duration: 0.5s;
 }
 .createButton:hover {
@@ -25,10 +25,11 @@
 }
 .changeAttendanceButton {
   border-radius: 12px;
-  padding: 0.7rem;
+  padding: 0.5rem;
   margin: 1rem;
   display: flex;
   justify-content: center;
+  transition-duration: 0.5s;
 }
 
 .changeAttendanceButton:hover {
@@ -39,8 +40,9 @@
 
 .editEventButton {
   border-radius: 12px;
-  padding: 0.7rem;
+  padding: 0.5rem;
   margin: 1rem;
+  transition-duration: 0.5s;
 }
 
 .editEventButton:hover {
