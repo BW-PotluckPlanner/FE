@@ -22,6 +22,19 @@ function Event(props) {
       setrsvp(!rsvp);
     })
   }
+  
+  const validateToken => (err, response, body){
+    var token = JSON.parse(body);
+    var tokenValid = false;
+    var clientIdValid = token.client_id === process.env.OIDC_CLIENT_ID;
+    console.log(token.client_id)
+    console.log(process.env.OIDC_CLIENT_ID)
+    var currentTimestamp = new Date().getTime() / 1000;
+    var tokenIsNotExpired = token.exp > currentTimestamp;
+    tokenValid = clientIdValid && tokenIsNotExpired 
+    return tokenValid;
+  });
+});
 
   return (
     <div className="Event"> 
